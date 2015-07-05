@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="product_dialog_button_compare_price">Compare Price</string>
+    <string name="product_dialog_button_visit_store">Visit Store</string>
+
+</resources>

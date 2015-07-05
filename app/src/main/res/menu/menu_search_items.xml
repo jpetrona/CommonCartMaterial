@@ -1,0 +1,15 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="in.commoncart.android.SearchItemsActivity">
+
+    <item android:id="@+id/action_sort" android:title="@string/action_sort"
+        android:orderInCategory="100" app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_sort_black_24dp"/>
+
+    <item android:id="@+id/action_filter" android:title="@string/action_filter"
+        android:orderInCategory="100" app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_filter_list_black_24dp"/>
+
+
+</menu>

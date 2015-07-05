@@ -1,0 +1,19 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
+    <item android:id="@+id/action_feedback_debug" android:title="Feedback Dialog (Debug)"
+        android:orderInCategory="100" app:showAsAction="never" />
+
+    <item android:id="@+id/action_show_product_debug" android:title="Product View (Debug)"
+        android:orderInCategory="100" app:showAsAction="never" />
+
+    <item android:id="@+id/action_search_debug" android:title="Search Mock (Debug)"
+        android:orderInCategory="100" app:showAsAction="never" />
+
+    <item android:id="@+id/action_wishlist_debug" android:title="Wishlist Mock (Debug)"
+        android:orderInCategory="100" app:showAsAction="never" />
+
+    <item android:id="@+id/action_login_debug" android:title="Login Mock (Debug)"
+        android:orderInCategory="100" app:showAsAction="never" />
+
+</menu>
