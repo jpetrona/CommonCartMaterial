@@ -11,5 +11,8 @@
         android:orderInCategory="100" app:showAsAction="ifRoom"
         android:icon="@drawable/ic_filter_list_black_24dp"/>
 
+    <item android:id="@+id/action_switch_view" android:title="@string/action_switch_view"
+        android:orderInCategory="100" app:showAsAction="never"/>
+
 
 </menu>

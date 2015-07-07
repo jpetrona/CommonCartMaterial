@@ -3,5 +3,6 @@
 
     <string name="action_sort">Sort</string>
     <string name="action_filter">Filter</string>
+    <string name="action_switch_view">Switch List/Grid view</string>
 
 </resources>

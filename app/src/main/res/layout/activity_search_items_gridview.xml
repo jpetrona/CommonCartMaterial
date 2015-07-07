@@ -1,0 +1,123 @@
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/activity_search_items_drawer"
+    tools:context="in.commoncart.android.SearchItemsActivity">
+
+    <GridView android:id="@+id/activity_search_items_gridview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@android:color/transparent"
+        android:numColumns="4"
+        />
+
+    <ScrollView
+        android:layout_width="260dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="right">
+
+        <LinearLayout
+            android:layout_width="260dp"
+            android:layout_height="match_parent"
+            android:background="@color/grey_0"
+            android:orientation="vertical">
+
+            <TextView android:layout_margin="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Subcategories:"
+                style="@style/TextAppearance.AppCompat.Button"
+                android:textSize="14sp"
+                android:textColor="@color/grey_500"/>
+
+            <ListView android:id="@+id/activity_search_items_filter_subcategories_listview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"/>
+
+            <TextView android:layout_margin="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Price (Rs.0 - Rs.100)"
+                style="@style/TextAppearance.AppCompat.Button"
+                android:textSize="14sp"
+                android:textColor="@color/grey_500"/>
+
+            <SeekBar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:progressDrawable="@drawable/material_seekbar_progress"
+                android:thumb="@drawable/material_seekbar_thumb"
+                android:minHeight="4dip"
+                android:maxHeight="4dip" />
+
+            <TextView android:layout_margin="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Brands:"
+                style="@style/TextAppearance.AppCompat.Button"
+                android:textSize="14sp"
+                android:textColor="@color/grey_500"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Select all"/>
+
+                <Button android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Deselect all"/>
+
+            </LinearLayout>
+
+            <ListView android:id="@+id/activity_search_items_filter_brand_listview"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:divider="@android:color/transparent"
+                android:layout_margin="4dp"/>
+
+            <TextView android:layout_margin="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Stores:"
+                style="@style/TextAppearance.AppCompat.Button"
+                android:textSize="14sp"
+                android:textColor="@color/grey_500"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Select all"/>
+
+                <Button android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="Deselect all"/>
+
+            </LinearLayout>
+
+            <ListView android:id="@+id/activity_search_items_filter_store_listview"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:divider="@android:color/transparent"
+                android:layout_margin="4dp"/>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</android.support.v4.widget.DrawerLayout>

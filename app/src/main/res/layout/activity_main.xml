@@ -41,11 +41,13 @@
                         android:background="@drawable/activity_main_search_edittext"
                         android:paddingLeft="8dp"
                         android:paddingRight="8dp"
-                        android:drawableStart="@drawable/ic_search_black_24dp"
-                        android:drawableLeft="@drawable/ic_search_black_24dp"/>
+                        android:hint="What are you looking for?"
+                        android:textSize="14sp"
+                        android:drawableEnd="@drawable/ic_search_black_24dp"
+                        android:drawableRight="@drawable/ic_search_black_24dp"/>
 
                     <Button android:id="@+id/activity_main_search_button"
-                        android:textColor="@color/grey_800"
+                        android:textColor="@color/grey_0"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/activity_main_search_button"
