@@ -4,10 +4,11 @@
     android:id="@+id/activity_search_items_drawer"
     tools:context="in.commoncart.android.SearchItemsActivity">
 
-    <ListView android:id="@+id/activity_search_items_listview"
+    <GridView android:id="@+id/activity_search_items_gridview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:divider="@android:color/transparent"
+        android:numColumns="4"
         />
 
     <ScrollView
@@ -37,29 +38,12 @@
             <TextView android:layout_margin="16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Min. price (Rs.0)"
+                android:text="Price (Rs.0 - Rs.100)"
                 style="@style/TextAppearance.AppCompat.Button"
                 android:textSize="14sp"
                 android:textColor="@color/grey_500"/>
 
-            <SeekBar android:id="@+id/search_items_min_seekbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:progressDrawable="@drawable/material_seekbar_progress"
-                android:thumb="@drawable/material_seekbar_thumb"
-                android:minHeight="4dip"
-                android:maxHeight="4dip" />
-
-            <TextView android:layout_margin="16dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Max. price (Rs.100)"
-                style="@style/TextAppearance.AppCompat.Button"
-                android:textSize="14sp"
-                android:textColor="@color/grey_500"/>
-
-            <SeekBar android:id="@+id/search_items_max_seekbar"
+            <SeekBar
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
