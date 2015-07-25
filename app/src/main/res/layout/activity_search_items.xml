@@ -21,115 +21,32 @@
             android:background="@color/grey_0"
             android:orientation="vertical">
 
-            <TextView android:layout_margin="16dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Subcategories:"
-                style="@style/TextAppearance.AppCompat.Button"
-                android:textSize="14sp"
-                android:textColor="@color/grey_500"/>
-
-            <ExpandableListView android:id="@+id/activity_search_items_filter_subcategories_listview"
+            <ExpandableListView android:id="@+id/activity_search_items_filter_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="4dp"/>
+                android:layout_margin="4dp" />
 
             <TextView android:layout_margin="16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Min. price (Rs.0)"
+                android:text="Price range (Rs. 0 - 100)"
                 style="@style/TextAppearance.AppCompat.Button"
                 android:textSize="14sp"
                 android:textColor="@color/grey_500"/>
 
-            <SeekBar android:id="@+id/search_items_min_seekbar"
+            <com.edmodo.rangebar.RangeBar
+                xmlns:custom="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/rangebar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:progressDrawable="@drawable/material_seekbar_progress"
-                android:thumb="@drawable/material_seekbar_thumb"
-                android:minHeight="4dip"
-                android:maxHeight="4dip" />
-
-            <TextView android:layout_margin="16dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Max. price (Rs.100)"
-                style="@style/TextAppearance.AppCompat.Button"
-                android:textSize="14sp"
-                android:textColor="@color/grey_500"/>
-
-            <SeekBar android:id="@+id/search_items_max_seekbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:progressDrawable="@drawable/material_seekbar_progress"
-                android:thumb="@drawable/material_seekbar_thumb"
-                android:minHeight="4dip"
-                android:maxHeight="4dip" />
-
-            <TextView android:layout_margin="16dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Brands:"
-                style="@style/TextAppearance.AppCompat.Button"
-                android:textSize="14sp"
-                android:textColor="@color/grey_500"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <Button android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="Select all"/>
-
-                <Button android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="Deselect all"/>
-
-            </LinearLayout>
-
-            <ExpandableListView android:id="@+id/activity_search_items_filter_brand_listview"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:divider="@android:color/transparent"
-                android:layout_margin="4dp"/>
-
-            <TextView android:layout_margin="16dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Stores:"
-                style="@style/TextAppearance.AppCompat.Button"
-                android:textSize="14sp"
-                android:textColor="@color/grey_500"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <Button android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="Select all"/>
-
-                <Button android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="Deselect all"/>
-
-            </LinearLayout>
-
-            <ExpandableListView android:id="@+id/activity_search_items_filter_store_listview"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:divider="@android:color/transparent"
-                android:layout_margin="4dp"/>
-
+                custom:thumbColorNormal="@color/colorAccent"
+                custom:thumbColorPressed="@color/colorAccent"
+                custom:thumbRadius="3dp"
+                custom:connectingLineColor="@color/colorAccent"
+                custom:tickCount="100"
+                custom:tickHeight="0dp"
+                />
 
         </LinearLayout>
 

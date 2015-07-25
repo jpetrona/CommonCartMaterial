@@ -16,6 +16,7 @@ import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
@@ -27,13 +28,15 @@ import android.widget.TextView;
 
 public class SearchItemsActivity extends AppCompatActivity {
 
+    private ExpandableListView filterListView;
+
     private boolean isList;
 
     private ListView mItemsListView;
     private GridView mItemsGridView;
     private DrawerLayout mDrawerLayout;
 
-    private ExpandableListView filterSubcategories, filterBrands, filterStores;
+    static boolean[] isExpanded;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,214 +74,18 @@ public class SearchItemsActivity extends AppCompatActivity {
 
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
-                if(convertView == null) {
+                if (convertView == null) {
                     convertView = getLayoutInflater().inflate(R.layout.product_list_item, null);
                 }
                 return convertView;
             }
         });
-
-        filterSubcategories = (ExpandableListView)findViewById(R.id.activity_search_items_filter_subcategories_listview);
-        final String[] dummySubs = {"Logitech", "Cyborg", "Razer", "Steelseries"};
-        filterSubcategories.setAdapter(new BaseExpandableListAdapter() {
-            @Override
-            public void notifyDataSetChanged() {
-                super.notifyDataSetChanged();
-                setListViewHeightBasedOnChildren(filterSubcategories);
-            }
-
-            @Override
-            public int getGroupCount() {
-                return 4;
-            }
-
-            @Override
-            public int getChildrenCount(int groupPosition) {
-                return 3;
-            }
-
-            @Override
-            public Integer getGroup(int groupPosition) {
-                return groupPosition;
-            }
-
-            @Override
-            public Integer getChild(int groupPosition, int childPosition) {
-                return groupPosition * childPosition;
-            }
-
-            @Override
-            public long getGroupId(int groupPosition) {
-                return (long)groupPosition;
-            }
-
-            @Override
-            public long getChildId(int groupPosition, int childPosition) {
-                return (long)groupPosition * childPosition;
-            }
-
-            @Override
-            public boolean hasStableIds() {
-                return false;
-            }
-
-            @Override
-            public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
-                if(convertView == null) {
-                    convertView = getLayoutInflater().inflate(android.R.layout.simple_list_item_1, null);
-                }
-                TextView text1 = (TextView)convertView.findViewById(android.R.id.text1);
-                text1.setText(dummySubs[groupPosition]);
-                return convertView;
-            }
-
-            @Override
-            public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
-                if(convertView == null) {
-                    convertView = getLayoutInflater().inflate(android.R.layout.simple_list_item_1, null);
-                }
-                TextView text1 = (TextView)convertView.findViewById(android.R.id.text1);
-                text1.setText(dummySubs[groupPosition]);
-                return convertView;
-            }
-
-            @Override
-            public boolean isChildSelectable(int groupPosition, int childPosition) {
-                return false;
-            }
-        });
-        // filterSubcategories.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, dummySubs));
-        setListViewHeightBasedOnChildren(filterSubcategories);
-
-        filterBrands = (ExpandableListView)findViewById(R.id.activity_search_items_filter_brand_listview);
-        //Dummy adapter
-        filterBrands.setAdapter(new BaseExpandableListAdapter() {
-                                    @Override
-                                    public int getGroupCount() {
-                                        return 4;
-                                    }
-
-                                    @Override
-                                    public int getChildrenCount(int groupPosition) {
-                                        return 3;
-                                    }
-
-                                    @Override
-                                    public Integer getGroup(int groupPosition) {
-                                        return groupPosition;
-                                    }
-
-                                    @Override
-                                    public Integer getChild(int groupPosition, int childPosition) {
-                                        return groupPosition * childPosition;
-                                    }
-
-                                    @Override
-                                    public long getGroupId(int groupPosition) {
-                                        return (long)groupPosition;
-                                    }
-
-                                    @Override
-                                    public long getChildId(int groupPosition, int childPosition) {
-                                        return groupPosition * childPosition;
-                                    }
-
-                                    @Override
-                                    public boolean hasStableIds() {
-                                        return false;
-                                    }
-
-                                    @Override
-                                    public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
-                                        if(convertView == null) {
-                                            convertView = getLayoutInflater().inflate(R.layout.list_checkbox_item, null);
-                                        }
-                                        return convertView;
-                                    }
-
-                                    @Override
-                                    public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
-                                        if(convertView == null) {
-                                            convertView = getLayoutInflater().inflate(R.layout.list_checkbox_item, null);
-                                        }
-                                        return convertView;
-                                    }
-
-                                    @Override
-                                    public boolean isChildSelectable(int groupPosition, int childPosition) {
-                                        return false;
-                                    }
-                                });
-                setListViewHeightBasedOnChildren(filterBrands);
-
-        filterStores = (ExpandableListView)findViewById(R.id.activity_search_items_filter_store_listview);
-        //Dummy adapter
-        filterStores.setAdapter(new BaseExpandableListAdapter() {
-            @Override
-            public int getGroupCount() {
-                return 4;
-            }
-
-            @Override
-            public int getChildrenCount(int groupPosition) {
-                return 3;
-            }
-
-            @Override
-            public Integer getGroup(int groupPosition) {
-                return groupPosition;
-            }
-
-            @Override
-            public Integer getChild(int groupPosition, int childPosition) {
-                return groupPosition * childPosition;
-            }
-
-            @Override
-            public long getGroupId(int groupPosition) {
-                return (long)groupPosition;
-            }
-
-            @Override
-            public long getChildId(int groupPosition, int childPosition) {
-                return groupPosition * childPosition;
-            }
-
-            @Override
-            public boolean hasStableIds() {
-                return false;
-            }
-
-            @Override
-            public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
-                if(convertView == null) {
-                    convertView = getLayoutInflater().inflate(R.layout.list_checkbox_item, null);
-                }
-                return convertView;
-            }
-
-            @Override
-            public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
-                if(convertView == null) {
-                    convertView = getLayoutInflater().inflate(R.layout.list_checkbox_item, null);
-                }
-                return convertView;
-            }
-
-            @Override
-            public boolean isChildSelectable(int groupPosition, int childPosition) {
-                return false;
-            }
-        });
-        setListViewHeightBasedOnChildren(filterStores);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     private void createGrid() {
         setContentView(R.layout.activity_search_items_gridview);
-        mItemsGridView = (GridView)findViewById(R.id.activity_search_items_gridview);
         mDrawerLayout = (DrawerLayout)findViewById(R.id.activity_search_items_drawer);
-        //Dummy adapter
+        mItemsGridView = (GridView)findViewById(R.id.activity_search_items_gridview);
         mItemsGridView.setAdapter(new BaseAdapter() {
             @Override
             public int getCount() {
@@ -297,30 +104,52 @@ public class SearchItemsActivity extends AppCompatActivity {
 
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
-                if(convertView == null) {
+                if (convertView == null) {
                     convertView = getLayoutInflater().inflate(R.layout.product_grid_item, null);
                 }
                 return convertView;
             }
         });
+    }
 
-        filterSubcategories = (ExpandableListView)findViewById(R.id.activity_search_items_filter_subcategories_listview);
+    private void init(boolean isList) {
+        this.isList = isList;
+        if(isList) createList();
+        else createGrid();
+
+        filterListView = (ExpandableListView)findViewById(R.id.activity_search_items_filter_list);
+        final String[] headers = {"Subcategories", "Brands", "Stores"};
         final String[] dummySubs = {"Logitech", "Cyborg", "Razer", "Steelseries"};
-        filterSubcategories.setAdapter(new BaseExpandableListAdapter() {
+        isExpanded = new boolean[headers.length];
+        filterListView.setAdapter(new BaseExpandableListAdapter() {
             @Override
             public void notifyDataSetChanged() {
                 super.notifyDataSetChanged();
-                setListViewHeightBasedOnChildren(filterSubcategories);
+                setListViewHeightBasedOnChildren(filterListView);
+            }
+
+            @Override
+            public void onGroupExpanded(int groupPosition) {
+                super.onGroupExpanded(groupPosition);
+                isExpanded[groupPosition] = true;
+                setListViewHeightBasedOnChildren(filterListView);
+            }
+
+            @Override
+            public void onGroupCollapsed(int groupPosition) {
+                super.onGroupCollapsed(groupPosition);
+                isExpanded[groupPosition] = false;
+                setListViewHeightBasedOnChildren(filterListView);
             }
 
             @Override
             public int getGroupCount() {
-                return 4;
+                return 3;
             }
 
             @Override
             public int getChildrenCount(int groupPosition) {
-                return 3;
+                return 4;
             }
 
             @Override
@@ -351,74 +180,11 @@ public class SearchItemsActivity extends AppCompatActivity {
             @Override
             public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
                 if(convertView == null) {
-                    convertView = getLayoutInflater().inflate(android.R.layout.simple_list_item_1, null);
+                    convertView = getLayoutInflater().inflate(R.layout.filter_listview_header, null);
                 }
-                TextView text1 = (TextView)convertView.findViewById(android.R.id.text1);
-                text1.setText(dummySubs[groupPosition]);
-                return convertView;
-            }
-
-            @Override
-            public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
-                if(convertView == null) {
-                    convertView = getLayoutInflater().inflate(android.R.layout.simple_list_item_1, null);
-                }
-                TextView text1 = (TextView)convertView.findViewById(android.R.id.text1);
-                text1.setText(dummySubs[groupPosition]);
-                return convertView;
-            }
-
-            @Override
-            public boolean isChildSelectable(int groupPosition, int childPosition) {
-                return false;
-            }
-        });
-        //filterSubcategories.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, dummySubs));
-        setListViewHeightBasedOnChildren(filterSubcategories);
-
-        filterBrands = (ExpandableListView)findViewById(R.id.activity_search_items_filter_brand_listview);
-        //Dummy adapter
-        filterBrands.setAdapter(new BaseExpandableListAdapter() {
-            @Override
-            public int getGroupCount() {
-                return 4;
-            }
-
-            @Override
-            public int getChildrenCount(int groupPosition) {
-                return 3;
-            }
-
-            @Override
-            public Integer getGroup(int groupPosition) {
-                return groupPosition;
-            }
-
-            @Override
-            public Integer getChild(int groupPosition, int childPosition) {
-                return groupPosition * childPosition;
-            }
-
-            @Override
-            public long getGroupId(int groupPosition) {
-                return (long)groupPosition;
-            }
-
-            @Override
-            public long getChildId(int groupPosition, int childPosition) {
-                return groupPosition * childPosition;
-            }
-
-            @Override
-            public boolean hasStableIds() {
-                return false;
-            }
-
-            @Override
-            public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
-                if(convertView == null) {
-                    convertView = getLayoutInflater().inflate(R.layout.list_checkbox_item, null);
-                }
+                SearchItemsActivity.isExpanded[groupPosition] = isExpanded;
+                TextView text1 = (TextView)convertView.findViewById(R.id.filter_listview_header_name);
+                text1.setText(headers[groupPosition]);
                 return convertView;
             }
 
@@ -427,6 +193,8 @@ public class SearchItemsActivity extends AppCompatActivity {
                 if(convertView == null) {
                     convertView = getLayoutInflater().inflate(R.layout.list_checkbox_item, null);
                 }
+                CheckBox check1 = (CheckBox)convertView.findViewById(R.id.list_checkbox_item_checkbox);
+                check1.setText(dummySubs[childPosition]);
                 return convertView;
             }
 
@@ -435,75 +203,9 @@ public class SearchItemsActivity extends AppCompatActivity {
                 return false;
             }
         });
-        setListViewHeightBasedOnChildren(filterBrands);
 
-        filterStores = (ExpandableListView)findViewById(R.id.activity_search_items_filter_store_listview);
-        //Dummy adapter
-        filterStores.setAdapter(new BaseExpandableListAdapter() {
-            @Override
-            public int getGroupCount() {
-                return 4;
-            }
-
-            @Override
-            public int getChildrenCount(int groupPosition) {
-                return 3;
-            }
-
-            @Override
-            public Integer getGroup(int groupPosition) {
-                return groupPosition;
-            }
-
-            @Override
-            public Integer getChild(int groupPosition, int childPosition) {
-                return groupPosition * childPosition;
-            }
-
-            @Override
-            public long getGroupId(int groupPosition) {
-                return (long)groupPosition;
-            }
-
-            @Override
-            public long getChildId(int groupPosition, int childPosition) {
-                return groupPosition * childPosition;
-            }
-
-            @Override
-            public boolean hasStableIds() {
-                return false;
-            }
-
-            @Override
-            public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
-                if(convertView == null) {
-                    convertView = getLayoutInflater().inflate(R.layout.list_checkbox_item, null);
-                }
-                return convertView;
-            }
-
-            @Override
-            public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
-                if(convertView == null) {
-                    convertView = getLayoutInflater().inflate(R.layout.list_checkbox_item, null);
-                }
-                return convertView;
-            }
-
-            @Override
-            public boolean isChildSelectable(int groupPosition, int childPosition) {
-                return false;
-            }
-        });
-        setListViewHeightBasedOnChildren(filterStores);
+        setListViewHeightBasedOnChildren(filterListView);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    }
-
-    private void init(boolean isList) {
-        this.isList = isList;
-        if(isList) createList();
-        else createGrid();
     }
 
     @Override
@@ -532,24 +234,35 @@ public class SearchItemsActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public static void setListViewHeightBasedOnChildren(ListView listView) {
-        ListAdapter listAdapter = listView.getAdapter();
+    public static void setListViewHeightBasedOnChildren(ExpandableListView listView) {
+        ExpandableListAdapter listAdapter = listView.getExpandableListAdapter();
         if (listAdapter == null)
             return;
 
         int desiredWidth = MeasureSpec.makeMeasureSpec(listView.getWidth(), MeasureSpec.UNSPECIFIED);
         int totalHeight = 0;
         View view = null;
-        for (int i = 0; i < listAdapter.getCount(); i++) {
-            view = listAdapter.getView(i, view, listView);
+        View groupView = null;
+        for (int i = 0; i < listAdapter.getGroupCount(); i++) {
+            groupView = listAdapter.getGroupView(i, isExpanded[i], groupView, null);
             if (i == 0)
-                view.setLayoutParams(new ListView.LayoutParams(desiredWidth, ListView.LayoutParams.WRAP_CONTENT));
+                groupView.setLayoutParams(new ListView.LayoutParams(desiredWidth, ListView.LayoutParams.WRAP_CONTENT));
 
-            view.measure(desiredWidth, MeasureSpec.UNSPECIFIED);
-            totalHeight += view.getMeasuredHeight();
+            groupView.measure(desiredWidth, MeasureSpec.UNSPECIFIED);
+            totalHeight += groupView.getMeasuredHeight();
+            if(isExpanded[i]) {
+                for (int j = 0; j < listAdapter.getChildrenCount(i); j++) {
+                    view = listAdapter.getChildView(i, j, j == listAdapter.getChildrenCount(i) - 1, view, null);
+                    if (i == 0)
+                        view.setLayoutParams(new ListView.LayoutParams(desiredWidth, ListView.LayoutParams.WRAP_CONTENT));
+
+                    view.measure(desiredWidth, MeasureSpec.UNSPECIFIED);
+                    totalHeight += view.getMeasuredHeight();
+                }
+            }
         }
         ViewGroup.LayoutParams params = listView.getLayoutParams();
-        params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
+        params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getGroupCount() - 1));
         listView.setLayoutParams(params);
         listView.requestLayout();
     }
